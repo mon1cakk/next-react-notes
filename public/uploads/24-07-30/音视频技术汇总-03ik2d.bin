@@ -1,0 +1,155 @@
+
+
+
+
+### 音视频技术汇总
+
+#### MPEG
+
+MPEG即Moving Picture Expert Group（[运动图像](https://baike.baidu.com/item/运动图像)专家组），它是专门从事制定[多媒体](https://baike.baidu.com/item/多媒体)视音频压缩[编码](https://baike.baidu.com/item/编码)标准的国际组织。MPEG系列标准已成为国际上影响最大的[多媒体](https://baike.baidu.com/item/多媒体)技术标准，其中MPEG-1和MPEG-2是采用以仙农信息论为基础的[预测编码](https://baike.baidu.com/item/预测编码)、变换编码、[熵编码](https://baike.baidu.com/item/熵编码)及运动补偿等第一代[数据压缩](https://baike.baidu.com/item/数据压缩)[编码](https://baike.baidu.com/item/编码)技术；MPEG-4（ISO/IEC 14496）则是基于第二代压缩编码技术制定的国际标准，它以视听媒体对象为[基本单元](https://baike.baidu.com/item/基本单元)，采用基于内容的压缩编码，以实现数字视音频、图形合成应用及[交互式多媒体](https://baike.baidu.com/item/交互式多媒体)的集成。MPEG系列标准对VCD、DVD等视听消费电子及[数字电视](https://baike.baidu.com/item/数字电视)和[高清晰度电视](https://baike.baidu.com/item/高清晰度电视)（DTV&&HDTV）、[多媒体](https://baike.baidu.com/item/多媒体)通信等信息产业的发展产生了巨大而深远的影响。
+
+
+
+#### H264
+
+
+
+#### RTSP
+
+RTSP（Real Time Streaming Protocol），RFC2326，实时流[传输协议](https://baike.baidu.com/item/传输协议)，是[TCP/IP协议](https://baike.baidu.com/item/TCP%2FIP协议)体系中的一个[应用层](https://baike.baidu.com/item/应用层)协议。其是 TCP/IP 协议体系中的一个应用层协议，该协议定义了一对多应用程序如何有效地通过 IP 网络传送多媒体数据。RTSP在体系结构上位于RTP和RTCP之上，它使用TCP或UDP完成数据传输。HTTP与RTSP相比，HTTP传送HTML，而RTSP传送的是多媒体数据。
+
+### 视频分辨率格式
+
+VGA 640X480 分辨率
+
+SVGA 800X600 分辨率
+
+XGA 1024X768 分辨率
+
+720p  1280X 720 分辨率
+
+1080p 1920X1080 分辨率
+
+QHD  2560X1440
+
+4K  3840X 2160 
+
+
+
+### ffmpeg的命令汇总
+
+切割视频命令  -ss 是开始时间，-t是结束时间，以下编码表示截取视频中的第三秒到第8秒的视频片段
+
+```
+ffmpeg -i movie.mp4 -ss 00:00:03 -t 00:00:08 -async 1 -strict -2 cut.mp4
+```
+
+单独处理音频音量命令  比如提升音量5分贝
+
+```
+ffmpeg  -i input.mp3 -filter：“volume = 5dB” output.mp3 
+```
+
+处理视频音量命令 比如提升音量分贝
+
+```
+ffmpeg -i FM_e9caceaa1c014f86a7049c50d91565ce.mp4 -af volume=5dB -y out.mp4
+```
+
+切割视频 pts帧从零开始
+
+```
+./ffmpeg -i xx.mp4 -ss 0 -c copy out.mp4
+```
+
+单声道视频变双声道视频命令
+
+```
+./ffmpeg -i xx.mp4 -ac 2 output.mp4
+```
+
+音频duratian过大的解决方案
+
+```
+./ffmpeg -i xx.mp3 -map 0:0 out.mp3
+```
+
+抽对应的视频文件流
+
+```
+./ffmpeg -i xx.mp4 -map 0:0 -map 0:1 out.mp4
+```
+
+m3u8文件转成mp4文件
+
+```
+./ffmpeg -i “http://xxxxxx/video/movie.m3u8” -vcodec copy -acodec copy -absf aac_adtstoasc output.mp4
+```
+
+将视频文件的音频编码格式指定为aac，视频编码格式指定为h264
+
+```
+ ./ffmpeg.exe -i https://XXXXX/4A6XPM0T4ksA.wmv  -acodec aac -vcodec h264 out.mp4
+```
+
+
+
+### ffprobe的命令汇总
+
+将视频文件转换成txt文件
+
+```
+ffprobe -i xx.mp4 -show_packets -of compact >video.txt
+```
+
+#### 
+
+#### 变xweb步骤
+
+变Xweb
+1、先访问这个链接，然后退出
+https://debugmm.qq.com/?forcex5=false
+2、再访问这个链接，退出
+http://debugxweb.qq.com/?set_appbrand_config=WV_KIND_CW&set_web_config=WV_KIND_CW
+3、在微信设置里，最下面退出按钮，关闭微信后，重新打开再访问课程链接试下
+
+
+
+#### 视频卡顿问题的原因和解决方法
+
+
+
+#### 视频音画不同步问题的排查和解决方法
+
+
+
+#### 视频黑屏问题的原因和解决方法
+
+
+
+
+
+问题类型暂固定为以下几种：
+视频转码异常
+视频播放异常卡顿/白屏/黑屏
+专栏目录异常
+音频播放异常
+训练营解锁异常
+富文本样式异常
+直播回放异常
+页面打开异常
+权益判断异常
+产品逻辑问题
+其他
+
+
+
+各种视频播放异常的表现和问题原因
+
+![image-20211027114916587](C:\Users\crispan\AppData\Roaming\Typora\typora-user-images\image-20211027114916587.png)
+
+
+
+问题原因分析：一般安卓手机初始化播放的时候出现这种画面基本问题都是安卓手机的播放器内核不兼容问题导致无法正常播放视频
+
+解决方法：1.先确认问题学员的手机播放器内核，确认方式是使用
